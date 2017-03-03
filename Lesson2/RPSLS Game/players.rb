@@ -40,8 +40,7 @@ class Computer < Player
   end
 
   def choose(_history, _score)
-    self.move = Move.new(Move::VALUES.values.sample) # returning the new Move object
-    # and that object will have a value of either rock paper scissors
+    self.move = Move.new(Move::VALUES.values.sample)
   end
 end
 
@@ -49,7 +48,7 @@ class R2D2 < Computer
   def set_name
     self.name = "R2D2"
   end
-  
+
   def choose(_history, _score)
     self.move = Move.new("spock")
   end
@@ -59,7 +58,7 @@ class Hal < Computer
   def set_name
     self.name = "Hal"
   end
-  
+
   def choose(_history, _score)
     self.move = Move.new(["spock", "lizard"].sample)
   end
@@ -69,27 +68,27 @@ class Chappie < Computer
   def set_name
     self.name = "Chappie"
   end
-  
+
   def choose(_history, _score)
     self.move = Move.new(Move::VALUES.values[0..2].sample)
   end
 end
-  
+
 class Sonny < Computer
   def set_name
     self.name = "Sonny"
   end
- 
+
   def choose(history, score)
-    if history.matches.empty?
-      self.move = Move.new(Move::VALUES.values.sample)
-    elsif  score > self.score
-      self.move = history.matches.last[0]
-    else
-      self.move = history.matches.last[1]
-    end  
+    self.move = if history.matches.empty?
+                  Move.new(Move::VALUES.values.sample)
+                elsif score > self.score
+                  history.matches.last[0]
+                else
+                  history.matches.last[1]
+                end
   end
-end  
+end
 
 class Number5 < Computer
   def set_name

@@ -1,5 +1,11 @@
 class Move
-  VALUES = {'r': 'rock', 'p': 'paper', 's': 'scissors', 'l': 'lizard', 'k':  'spock'}
+  VALUES = {
+    'r': 'rock',
+    'p': 'paper',
+    's': 'scissors',
+    'l': 'lizard',
+    'k':  'spock'
+  }
 
   def initialize(value)
     @value = value
@@ -16,11 +22,11 @@ class Move
   def paper?
     @value == 'paper'
   end
-  
+
   def lizard?
     @value == 'lizard'
   end
-  
+
   def spock?
     @value == 'spock'
   end
